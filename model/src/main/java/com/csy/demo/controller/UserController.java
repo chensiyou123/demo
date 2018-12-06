@@ -3,6 +3,7 @@ package com.csy.demo.controller;
 import com.csy.demo.model.User;
 import com.csy.demo.service.UserService;
 import com.csy.demo.utils.PageQuery;
+import com.csy.demo.utils.SimpleMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,8 @@ public class UserController{
     }
 
     @RequestMapping(value = "/query",method = RequestMethod.GET)
-    public Map<String,Object> query(PageQuery pageQuery){
+    @ResponseBody
+    public SimpleMessage query(PageQuery pageQuery){
         return userService.query(pageQuery);
     }
     @RequestMapping(value = "/testsave",method = RequestMethod.GET)

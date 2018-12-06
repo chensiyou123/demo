@@ -4,16 +4,18 @@ import com.csy.demo.dao.UserMapper;
 import com.csy.demo.model.User;
 import com.csy.demo.service.UserService;
 import com.csy.demo.utils.PageQuery;
+import com.csy.demo.utils.SimpleMessage;
+import com.csy.demo.utils.SimplePage;
 import com.csy.demo.utils.UUIDUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.orderbyhelper.OrderByHelper;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -51,13 +53,13 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Map<String, Object> query(PageQuery pageQuery) {
+    public SimpleMessage query(PageQuery pageQuery) {
         Map map = pageQuery.convertFilterToMap();
-        PageHelper.startPage(1, 10);
+        PageHelper.startPage(pageQuery.getPage(), pageQuery.getSize());
+        OrderByHelper.orderBy(pageQuery.convertSort());
         List<User> list = userMapper.query(map);
-        PageInfo<User> page = new PageInfo<User>(list);
-        Map resultMap = new HashMap();
-        resultMap.put("info",page);
-        return resultMap;
+        PageInfo pageInfo = new PageInfo(list);
+        return SimpleMessage.info(new SimplePage<User>().convert(pageInfo));
+
     }
 }
