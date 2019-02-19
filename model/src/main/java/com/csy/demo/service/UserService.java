@@ -2,6 +2,7 @@ package com.csy.demo.service;
 
 import com.csy.demo.model.User;
 import com.csy.demo.utils.PageQuery;
+import com.csy.demo.utils.SimpleMessage;
 
 import java.util.Map;
 
@@ -15,7 +16,7 @@ public interface UserService{
 
     Map<String,Object>update(User user);
 
-    Map<String,Object>query(PageQuery pageQuery);
+    SimpleMessage query(PageQuery pageQuery);
 
 
 

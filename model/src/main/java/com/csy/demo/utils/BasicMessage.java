@@ -1,6 +1,6 @@
 package com.csy.demo.utils;
 
-import com.csy.demo.educloud.IMessageCodeEnum;
+import com.csy.demo.utils.enumeration.IMessageCodeEnum;
 
 public abstract class BasicMessage {
     private Object data;
