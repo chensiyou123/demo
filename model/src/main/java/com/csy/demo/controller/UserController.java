@@ -43,6 +43,7 @@ public class UserController{
     public SimpleMessage query(PageQuery pageQuery){
         return userService.query(pageQuery);
     }
+    @ResponseBody
     @RequestMapping(value = "/testsave",method = RequestMethod.GET)
     public Map<String,Object> testsave(PageQuery pageQuery){
         return userService.save(null);

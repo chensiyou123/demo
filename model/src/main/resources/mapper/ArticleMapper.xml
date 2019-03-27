@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csy.demo.dao.ArtcleMapper">
+    <resultMap id="BaseResultMap" type="com.csy.demo.model.Article">
+        <id column="id" jdbcType="CHAR" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="userId" jdbcType="CHAR" property="userId" />
+        <result column="typeId" jdbcType="CHAR" property="typeId" />
+        <result column="points" jdbcType="INTEGER" property="points" />
+        <result column="download1" jdbcType="VARCHAR" property="download1" />
+        <result column="password1" jdbcType="VARCHAR" property="password1" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="publishDate" jdbcType="DATE" property="publishDate" />
+        <result column="checkDate" jdbcType="DATE" property="checkDate" />
+    </resultMap>
+
+    <select id="query" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select  * from  t_article
+    </select>
+</mapper>
